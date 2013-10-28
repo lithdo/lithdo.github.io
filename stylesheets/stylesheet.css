@@ -35,8 +35,24 @@ section {
 	box-shadow: 10px 10px 10px #555;
 }
 
+article {
+	width: 690px;
+	background: white;	
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	margin-bottom: 25px;	
+	padding: 20px;	
+	border-radius: 10px;	
+	box-shadow: 10px 10px 10px #555;
+}
+
 footer {
 	width: 690px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+p {
+  text-indent: 2em;
 }
