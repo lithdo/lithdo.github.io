@@ -53,6 +53,6 @@ footer {
 	margin-right: auto;
 }
 
-p {
+article>p {
   text-indent: 2em;
 }

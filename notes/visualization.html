@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>lithdo | 可视化学习笔记</title>
+		<link rel="stylesheet" href="../stylesheets/stylesheet.css" type="text/css" />
+
+	</head>
+
+	<body>
+		<header>
+			<nav>
+				<ul>
+					<li><a href="../index.html">返回</a></li>
+					<li>|</li>
+					<li><a href="../index.html#articles">文章</a></li>
+					<li>·</li>
+					<li><a href="../index.html#notes">笔记</a></li>
+					<li>·</li>
+					<li><a href="../index.html#projects">项目</a></li>
+					<li>·</li>
+					<li><a href="../index.html#books">电子书</a></li>
+				</ul>
+			</nav>
+			
+			<h1>可视化学习笔记</h1>
+		</header>
+
+		<article>
+			<h1>Matlab中的可视化技术</h1>
+				<h2>plot函数</h2>
+					<h3>plot简介</h3>
+					<ol>
+						<li><p>plot函数将数组中的数据绘制在坐标平面上：</p>
+						<pre><code>							>> x = linspace(0, 2*pi, 30)
+							>> y = sin(x)
+							>> plot(x, y)
+						</code></pre>
+						</li>
+						
+						<li><p>plot可在一幅图上绘制多条曲线：</p>
+						<pre><code>								>> z = cos(x)
+								>> plot(x, y, x, z)
+						</code></pre>
+						</li>
+						
+						<li><p>若输入参数一个是向量，一个是矩阵，则plot将矩阵中每一列（或行）与向量组成一对，分别画出相应的曲线：</p>
+						<pre><code>							>> W = [y; z]
+							>> plot(x, W) % 得到与上例相同的图形
+						</code></pre>
+						</li>
+						
+						<li><p>只有一个参数时，<code>plot(Y)</code>相当于<code>plot(1:length(Y), Y)</code>。</p></li>
+					</ol>
+				
+					<h3>线形、标记和颜色</h3>
+					<ol>
+						<li><p>颜色：</p>
+							<table border="1">
+							  <tr>
+								<th>b</th><th>g</th><th>r</th><th>c</th><th>m</th><th>y</th><th>k</th><th>w</th>
+							  </tr>
+							  <tr>
+								<td>蓝</td><td>绿</td><td>红</td><td>青</td><td>洋红</td><td>黄</td><td>黑</td><td>白</td>
+							  </tr>
+							</table>
+						</li>
+						
+						<li><p>标记：</p>
+							<table border="1">
+							  <tr>
+								<th>.</th><th>o</th><th>x</th><th>v, ^, <, ></th><th>+</th><th>*</th><th>s</th><th>d</th><th>p</th><th>h</th>
+							  </tr>
+							  <tr>
+								<td>点</td><td>圈</td><td>叉</td><td>三角形</td><td>加号</td><td>星号</td><td>方形</td><td>菱形</td><td>五角星</td><td>六角星</td>
+							  </tr>
+							</table>
+						</li>
+						
+						<li><p>线形：</p>
+							<table border="1">
+							  <tr>
+								<th>.</th><th>:</th><th>-.</th><th>--</th>
+							  </tr>
+							  <tr>
+								<td>实线</td><td>点线</td><td>点划线</td><td>虚线</td>
+							  </tr>
+							</table>
+						</li>
+						
+						<li><p>在plot中指定曲线的属性：</p>
+						<pre><code>							>> plot(x, y, 'b:s', x, z, 'y-')
+						</code></pre>
+						</li>
+					</ol>
+									
+					<h3>图形格栅、轴框和标签</h3>
+					<ol>
+						<li><p>代码示例：</p>
+						<pre><code>							>> plot(x, y)
+							>> grid on          % 显示网格线
+							>> box off          % 不显示轴框线
+							>> xlabel('X')      % 横轴标签
+							>> ylabel('Y')      % 纵轴标签
+							>> title('Y=Y(x)')  % 图形标题，显示在图上方
+						</code></pre>						
+						</li>
+					</ol>
+	
+					<h3>多个图形</h3>
+					<ol>
+						<li><p>hold命令可在已有图形的窗口上添加新曲线：</p>
+						<pre><code>							>> plot(x, y)
+							>> grid on          % 显示网格线
+							>> box off          % 不显示轴框线
+							>> xlabel('X')      % 横轴标签
+							>> ylabel('Y')      % 纵轴标签
+							>> title('Y=Y(x)')  % 图形标题，显示在图上方
+						</code></pre>						
+						</li>
+					</ol>
+				
+					<h3>子图</h3>
+					<ol>
+						<li><p><code>subplot(m, n, p)</code>将当前窗口分为m×n个子区域，并将第p个区域作为工作区：</p>
+						<pre><code>							>> subplot(2, 2, 1)
+							>> plot(x, y1)
+							>> title('figure 1')
+							>> 
+							>> subplot(2, 2, 2)
+							>> plot(x, y2)
+							>> title('figure 2')
+							>> 
+							>> subplot(2, 2, 3)
+							>> plot(x, y3)
+							>> title('figure 3')
+							>> 
+							>> subplot(2, 2, 4)
+							>> plot(x, y4)
+							>> title('figure 4')
+						</code></pre>						
+						</li>
+					</ol>
+		</article>
+		
+		<footer>
+			lithdo的<a href="mailto:lithdo@gmail.com">Email</a>
+		</footer>
+	</body>
+</html>
