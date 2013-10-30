@@ -165,3 +165,13 @@ ol {
 	font-weight: normal;
 	font-style: italic;
 }
+
+@media only screen and (device-width: 768px) {
+	/* 48em total: 38em body, 7em padding, 3em margin */
+	header, footer, section, article { width: 48em; }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+	/* 30em total: 28em body, 2em padding, 0em margin */
+	header, footer, section, article { width: 30em; }
+}
