@@ -56,3 +56,29 @@ footer {
 article>p {
   text-indent: 2em;
 }
+
+pre, code {
+	font-family: Inconsolata, inconsolata, "Source Code Pro", Terminus, Consolas, "Liberation Mono", "Bitstream Vera Sans Mono", "Andale Mono WT", "Andale Mono", Monaco, "Lucida Console", "Lucida Sans Typewriter", "Nimbus Mono L", "Courier New", Courier, monospace;
+}
+
+pre {
+	background-color: #202224;
+	color: #f8f8f8;
+	overflow-x: auto;
+	border-radius: .3em;
+	padding: 1em;
+	margin-bottom: 1.5em;
+}
+
+table {
+	border-collapse:collapse;
+}
+
+table,th, td {
+	border: 1px solid black;
+}
+
+th, td {
+	padding: .3em;
+	text-align: center;
+}
