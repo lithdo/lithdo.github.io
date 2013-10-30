@@ -180,6 +180,7 @@ ol {
 	position: absolute;
 	top: 280px;
 	background: #ddd;
+	opacity: 0.7;
 }
 
 #tocSwitcher {
