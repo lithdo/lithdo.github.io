@@ -46,7 +46,7 @@
 
 <li><p>若输入参数一个是向量，一个是矩阵，则plot将矩阵中每一列（或行）与向量组成一对，分别画出相应的曲线：</p>
 <pre><code>>> W = [y; z]
->> plot(x, W)        % 得到与上例相同的图形
+>> plot(x, W)        <span class="comment">% 得到与上例相同的图形</span>
 </code></pre>
 </li>
 
@@ -98,11 +98,11 @@
 <ol>
 <li><p>代码示例：</p>
 <pre><code>>> plot(x, y)
->> grid on          % 显示网格线
->> box off          % 不显示轴框线
->> xlabel('X')      % 横轴标签
->> ylabel('Y')      % 纵轴标签
->> title('Y=Y(x)')  % 图形标题，显示在图上方
+>> grid on          <span class="comment">% 显示网格线</span>
+>> box off          <span class="comment">% 不显示轴框线</span>
+>> xlabel('X')      <span class="comment">% 横轴标签</span>
+>> ylabel('Y')      <span class="comment">% 纵轴标签</span>
+>> title('Y=Y(x)')  <span class="comment">% 图形标题，显示在图上方</span>
 </code></pre>						
 </li>
 </ol>
@@ -111,11 +111,8 @@
 <ol>
 <li><p>hold命令可在已有图形的窗口上添加新曲线：</p>
 <pre><code>>> plot(x, y)
->> grid on          % 显示网格线
->> box off          % 不显示轴框线
->> xlabel('X')      % 横轴标签
->> ylabel('Y')      % 纵轴标签
->> title('Y=Y(x)')  % 图形标题，显示在图上方
+>> hold on
+>> plot(x, z, 'b')
 </code></pre>						
 </li>
 </ol>
