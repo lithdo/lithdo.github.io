@@ -32,7 +32,7 @@
 <h3>plot简介</h3>
 <ol>
 <li><p>plot函数将数组中的数据绘制在坐标平面上：</p>
-<pre><code>>> x = linspace(0, 2*pi, 30)
+<pre><code>>> x = linspace(<span class="number">0</span>, <span class="number">2</span>*pi, <span class="number">30</span>)
 >> y = sin(x)
 >> plot(x, y)
 </code></pre>
@@ -89,7 +89,7 @@
 </li>
 
 <li><p>在plot中指定曲线的属性：</p>
-<pre><code>>> plot(x, y, 'b:s', x, z, 'y-')
+<pre><code>>> plot(x, y, <span class="string">'b:s'</span>, x, z, <span class="string">'y-'</span>)
 </code></pre>
 </li>
 </ol>
@@ -100,9 +100,9 @@
 <pre><code>>> plot(x, y)
 >> grid on          <span class="comment">% 显示网格线</span>
 >> box off          <span class="comment">% 不显示轴框线</span>
->> xlabel('X')      <span class="comment">% 横轴标签</span>
->> ylabel('Y')      <span class="comment">% 纵轴标签</span>
->> title('Y=Y(x)')  <span class="comment">% 图形标题，显示在图上方</span>
+>> xlabel(<span class="string">'X'</span>)      <span class="comment">% 横轴标签</span>
+>> ylabel(<span class="string">'Y'</span>)      <span class="comment">% 纵轴标签</span>
+>> title(<span class="string">'Y=Y(x)'</span>)  <span class="comment">% 图形标题，显示在图上方</span>
 </code></pre>						
 </li>
 </ol>
@@ -112,7 +112,7 @@
 <li><p>hold命令可在已有图形的窗口上添加新曲线：</p>
 <pre><code>>> plot(x, y)
 >> hold on
->> plot(x, z, 'b')
+>> plot(x, z, <span class="string">'b'</span>)
 </code></pre>						
 </li>
 </ol>
@@ -120,21 +120,21 @@
 <h3>子图</h3>
 <ol>
 <li><p><code>subplot(m, n, p)</code>将当前窗口分为m×n个子区域，并将第p个区域作为工作区：</p>
-<pre><code>>> subplot(2, 2, 1)
+<pre><code>>> subplot(<span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>)
 >> plot(x, y1)
->> title('figure 1')
+>> title(<span class="string">'figure 1'</span>)
 >> 
->> subplot(2, 2, 2)
+>> subplot(<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>)
 >> plot(x, y2)
->> title('figure 2')
+>> title(<span class="string">'figure 2'</span>)
 >> 
->> subplot(2, 2, 3)
+>> subplot(<span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>)
 >> plot(x, y3)
->> title('figure 3')
+>> title(<span class="string">'figure 3'</span>)
 >> 
->> subplot(2, 2, 4)
+>> subplot(<span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>)
 >> plot(x, y4)
->> title('figure 4')
+>> title(<span class="string">'figure 4'</span>)
 </code></pre>						
 </li>
 </ol>
