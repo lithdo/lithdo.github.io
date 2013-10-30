@@ -100,31 +100,68 @@ ol {
 	margin-left: 1em;
 }
 
-/* Source code (From Twilight Color Theme for Emacs)
-Unspecified code selectors: value, cbracket, context, usertype,
-classname, specialchar, symbol, todo, linenum, url */
-code .bold { font-weight: bold; }
-code .italics { font-style: italic; }
-code .underline { text-decoration: underline; } /* LaTeX */
-code .fixed { font-family: monospace; } /* LaTeX */
-code .bibtex, /* LaTeX */
-code .keyword { font-weight: bold; color: #e5bc75; }
-code .math, /* LaTeX */
-code .date, /* ChangeLog */
-code .time, /* ChangeLog */
-code .oldfile, /* diff */
-code .string, code .regexp, code .character { color: #a8b87d }
-code .name, /* ChangeLog */
-code .newfile, /* diff */
-code .number { color: #e87856; }
-code .file, /* ChangeLog */
-code .function { color: #e3e3e3; }
-code .selector, /* css */
-code .type { font-weight: bold; color: #b5834a; }
-code .ip, /* ChangeLog */
-code .property, /* CSS */
-code .argument, /* LaTeX */
-code .optionalargument, /* LaTeX */
-code .variable { color: #869cbf; }
-code .preproc, code .comment { color: #79737a; }
-code .difflines  { font-weight: bold; } /* diff */
+.keyword {
+  color: #ffff00;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.type {
+  color: #00ff00;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.string {
+  color: #abab00;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.specialchar {
+  color: #bfbfbf;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.comment {
+  color: #888888;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.number {
+  color: #e87856;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.preproc {
+  color: #1da3cf;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.symbol {
+  color: #ff00ff;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.function {
+  color: #f34627;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.cbracket {
+  color: #ff00ff;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.variable { 
+	color: #869cbf; 
+	font-weight: normal;
+	font-style: italic;
+}
