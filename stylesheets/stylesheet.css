@@ -96,6 +96,10 @@ th, td {
 	text-align: center;
 }
 
+ol {
+	margin-left: 1em;
+}
+
 /* Source code (From Twilight Color Theme for Emacs)
 Unspecified code selectors: value, cbracket, context, usertype,
 classname, specialchar, symbol, todo, linenum, url */
