@@ -5,9 +5,56 @@
 <title>lithdo | 可视化学习笔记</title>
 <link rel="stylesheet" href="../stylesheets/stylesheet.css" type="text/css" />
 
+<script src="http://code.jquery.com/jquery-1.10.1.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(document).ready(  function(){
+function updateTOC() {
+    var toc = '';
+    var old_level = 0;
+    $('h1,h2,h3,h4').each(function(i, h) {
+		h.id = 'title' + i;
+	    level = parseInt(h.tagName.substring(1));
+	    if (level < old_level) {
+		toc += '</ol>';
+	    } else if (level > old_level) {
+		toc += '<ol>';
+	    }
+	    toc += '<li><a href=#' + h.id + '>' + h.innerHTML + '</a>';
+	    old_level = level;
+	});
+    while (level > 1) {
+		toc += '</ol>';
+		level -= 1;
+    }
+
+    $("#toc").html(toc);
+}
+
+$(window).scroll(function (){
+	var offsetTop = $(window).scrollTop() + 280 +"px";
+	$("#tocSwitcher").animate({top : offsetTop},{duration:500 , queue:false});
+	$("#toc").animate({top : offsetTop},{duration:500 , queue:false});
+});
+
+updateTOC();
+
+$("#toc a").click(function(){
+	var rel=$(this).attr("href");
+	var pos=$(rel).offset().top;//获取该点到头部的距离
+	$("html,body").animate({scrollTop:pos}, 800);
+})
+
+});
+</script>
+
 </head>
 
 <body>
+
+<div id="tocSwitcher" class="float" onclick="$('#toc').toggle(500);">目录</div>
+<div id="toc" class="float"></div>
+
 <header>
 <nav>
 <ul>
@@ -27,9 +74,9 @@
 </header>
 
 <article>
-<h1>Matlab中的可视化技术</h1>
-<h2>plot函数</h2>
-<h3>plot简介</h3>
+<h2>Matlab中的可视化技术</h2>
+<h3>plot函数</h3>
+<h4>plot简介</h4>
 <ol>
 <li><p>plot函数将数组中的数据绘制在坐标平面上：</p>
 <pre><code>>> <span class="variable">x</span> = <span class="function">linspace</span>(<span class="number">0</span>, <span class="number">2</span>*<span class="variable">pi</span>, <span class="number">30</span>)
@@ -53,7 +100,7 @@
 <li><p>只有一个参数时，<code>plot(Y)</code>相当于<code>plot(1:length(Y), Y)</code>。</p></li>
 </ol>
 
-<h3>线形、标记和颜色</h3>
+<h4>线形、标记和颜色</h4>
 <ol>
 <li><p>颜色：</p>
 <table border="1">
@@ -94,7 +141,7 @@
 </li>
 </ol>
 
-<h3>图形格栅、轴框和标签</h3>
+<h4>图形格栅、轴框和标签</h4>
 <ol>
 <li><p>代码示例：</p>
 <pre><code>>> <span class="function">plot</span>(<span class="variable">x</span>, <span class="variable">y</span>)
@@ -107,7 +154,7 @@
 </li>
 </ol>
 
-<h3>多个图形</h3>
+<h4>多个图形</h4>
 <ol>
 <li><p>hold命令可在已有图形的窗口上添加新曲线：</p>
 <pre><code>>> <span class="function">plot</span>(<span class="variable">x</span>, <span class="variable">y</span>)
@@ -117,7 +164,7 @@
 </li>
 </ol>
 
-<h3>子图</h3>
+<h4>子图</h4>
 <ol>
 <li><p><code>subplot(m, n, p)</code>将当前窗口分为m×n个子区域，并将第p个区域作为工作区：</p>
 <pre><code>>> <span class="function">subplot</span>(<span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>)

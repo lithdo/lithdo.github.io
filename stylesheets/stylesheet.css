@@ -175,3 +175,21 @@ ol {
 	/* 30em total: 28em body, 2em padding, 0em margin */
 	header, footer, section, article { width: 30em; }
 }
+
+.float {
+	position: absolute;
+	top: 280px;
+	background: #ddd;
+}
+
+#tocSwitcher {
+	width: 3em;
+	text-align: center;
+}
+
+#toc {
+	left: 4em;
+	height: 12em;
+	/*width: 10em;*/
+	display: none;
+}
