@@ -4,10 +4,15 @@
 		<meta charset='utf-8'>
 		<title>lithdo</title>
 		<link rel="stylesheet" href="stylesheets/stylesheet.css" type="text/css" />
-
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js" type="text/javascript"></script>
+		<script src="scripts/toc.js" type="text/javascript"></script>
 	</head>
 
 	<body>
+		
+		<div id="tocSwitcher" class="float" onclick="$('#toc').toggle(500);">目录</div>
+		<div id="toc" class="float"></div>
+
 		<header>
 			<h1>lithdo的个人主页</h1>			
 			<nav>
@@ -24,7 +29,7 @@
 		</header>
 		
 		<section id="articles">
-			<h1>文章</h1>			
+			<h2>文章</h2>			
 			<ul>
 				<li><a href="articles/diary/diary.html">日记</a></li>
 				<li><a href="articles/epub-beginner's-guide.html">epub入门教程</a></li>
@@ -32,21 +37,21 @@
 		</section>
 		
 		<section id="notes">
-			<h1>笔记</h1>
+			<h2>笔记</h2>
 			<ul>
 				<li><a href="notes/visualization.html">可视化学习笔记</a></li>
 			</ul>			
 		</section>
 		
 		<section id="projects">
-			<h1>项目</h1>			
+			<h2>项目</h2>			
 			<ul>
 				<li><a href="https://github.com/lithdo/Poems-of-Tao/tree/yizhu" target="_blank">陶渊明集</a></li>
 			</ul>
 		</section>
 		
 		<section id="books">
-			<h1>电子书</h1>
+			<h2>电子书</h2>
 			
 			<ul>
 				<li><a href="http://yun.baidu.com/share/link?shareid=3879636097&uk=3325019724" target="_blank">陶渊明集</a></li>

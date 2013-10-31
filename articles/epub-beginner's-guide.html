@@ -4,10 +4,15 @@
 		<meta charset='utf-8'>
 		<title>lithdo | EPUB入门教程</title>
 		<link rel="stylesheet" href="../stylesheets/stylesheet.css" type="text/css" />
-
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js" type="text/javascript"></script>
+		<script src="../scripts/toc.js" type="text/javascript"></script>
 	</head>
 
 	<body>
+		
+		<div id="tocSwitcher" class="float" onclick="$('#toc').toggle(500);">目录</div>
+		<div id="toc" class="float"></div>
+
 		<header>
 			<nav>
 				<ul>
@@ -27,7 +32,7 @@
 		</header>
 
 		<article>
-			<h1>Hello, EPUB</h1>
+			<h2>Hello, EPUB</h2>
 			<p>首先，不讲任何理论知识，直接动手做一个最简单的epub文件，其内容为“Hello, EPUB”。</p>
 		</article>
 		
