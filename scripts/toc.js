@@ -27,9 +27,11 @@ $(window).scroll(function (){
 	$("#toc").animate({top : offsetTop},{duration:500 , queue:false});
 });
 
-updateTOC();
+    $("body").append('<div id="tocSwitcher" class="float" onclick="$(\'#toc\').toggle(500);">目录</div>');
+    $("body").append('<div id="toc" class="float"></div>');
+    updateTOC();
 
-$("#toc a").click(function(){
+    $("#toc a").click(function(){
 	var rel=$(this).attr("href");
 	var pos=$(rel).offset().top;//获取该点到头部的距离
 	$("html,body").animate({scrollTop:pos}, 800);
