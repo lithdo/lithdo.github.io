@@ -1,7 +1,6 @@
 body {
 	background: #cdd4dc;
 	font-family: "Open Sans", Helvetica, Arial, sans-serif;
-	text-rendering: optimizeLegibility;
 	color: #333;
 }
 
@@ -166,16 +165,6 @@ ol {
 	font-style: italic;
 }
 
-@media only screen and (device-width: 768px) {
-	/* 48em total: 38em body, 7em padding, 3em margin */
-	header, footer, section, article { width: 48em; }
-}
-
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-	/* 30em total: 28em body, 2em padding, 0em margin */
-	header, footer, section, article { width: 30em; }
-}
-
 .float {
 	position: absolute;
 	top: 280px;
@@ -193,4 +182,9 @@ ol {
 	height: 12em;
 	/*width: 10em;*/
 	display: none;
+}
+
+dfn {
+    font-weight: bold;
+    font-style: normal;
 }
