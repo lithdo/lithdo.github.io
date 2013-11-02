@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>lithdo | 时间序列学习笔记</title>
+    <link rel="stylesheet" href="../stylesheets/stylesheet.css" type="text/css"/>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js" type="text/javascript"></script>
+    <script src="../scripts/toc.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+</head>
+
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">返回</a></li>
+            <li>|</li>
+            <li><a href="../index.html#articles">文章</a></li>
+            <li>·</li>
+            <li><a href="../index.html#notes">笔记</a></li>
+            <li>·</li>
+            <li><a href="../index.html#projects">项目</a></li>
+            <li>·</li>
+            <li><a href="../index.html#books">电子书</a></li>
+        </ul>
+    </nav>
+
+    <h1>时间序列学习笔记</h1>
+</header>
+
+<article>
+    <h2>一元线性回归</h2>
+
+    <h3>线性回归模型</h3>
+
+    <p>一元线性回归模型（linear regression model with a single regressor）：</p>
+
+    $$ Y_i = \beta_0 + \beta_1 X_i + u_i $$
+
+    <p>其中\(Y\)称为<dfn>从属变量</dfn>（regressand），\(X\)称为<dfn>回归变量</dfn>（regressor）。</p>
+
+    <p>式中第一部分\(\beta_0 + \beta_1 X\)称为<dfn>总体回归线</dfn>（population regression line）。</p>
+
+    <p><dfn>截距</dfn>（intercept）\(\beta_0\)和<dfn>斜率</dfn>（slope）\(\beta_1\)称为总体回归线的<dfn>系数</dfn>（coefficient）。</p>
+
+    <p>\(u_i\)称为<dfn>误差项（error term）</dfn>。</p>
+
+    <h3>线性回归模型的系数估计</h3>
+
+    <p>令\(b_0\)和\(b_1\)分别表示\(\beta_0\)和\(\beta_1\)的估计量，则基于这些估计量的回归线为\(b_0 + b_1 X\)，所有\(n\)个观测的预测误差平方和为：</p>
+
+    $$ \sum\limits_{i=1}^n (Y_i - b_0 - b_1 X_i)^2 $$
+
+    <p>我们称最小化式中误差平方和的截距和斜率估计量为\(\beta_0\)和\(\beta_1\)的<dfn>普通最小二乘（OLS）估计量</dfn>，分别记为\(\hat\beta_0\)和\(\hat\beta_1\)。</p>
+
+    <p>给定\(X_i\)时\(Y_i\)的<dfn>预测值</dfn>（predicted value）记为\(\hat Y_i = \hat\beta_0 + \hat\beta_1 X_i\)。</p>
+
+    <p>第i个观测的<dfn>残差</dfn>（residual）记为\(\hat u_i = Y_i - \hat Y_i\)。</p>
+
+    <h3>拟合优度</h3>
+
+    <p>估计了线性回归线后，你可能想知道用回归线描述数据的效果如何：</p>
+    <ol>
+        <li>回归变量说明了大部分还是极少部分的因变量变化？</li>
+        <li>观测值是紧密地聚集在回归线周围呢还是很分散？</li>
+    </ol>
+
+    <p>\(R^2\)和回归标准误差衡量了OLS回归线拟合数据的效果。其中\(R^2\)度量了能被\(X_i\)解释的\(Y_i\)方差的比例。而回归标准误差度量了\(Y_i\)距离其预测值的典型偏差大小。</p>
+
+    <h4>\(R^2\)</h4>
+
+    <p><dfn>回归\(R^2\)</dfn>是指可由\(X_i\)解释（或预测）的\(Y_i\)样本方差比例：</p>
+
+    $$\begin{aligned}
+        ESS &= \sum\limits_{i=1}^n (\hat Y_i - \bar Y_i)^2 \\
+        TSS &= \sum\limits_{i=1}^n (Y_i - \bar Y_i)^2 \\
+        R^2 &= {ESS \over TSS}
+    \end{aligned}$$
+
+    <p>\(R^2\)的取值范围为0到1。\(R^2\)接近1表示回归变量能较好地预测\(Y_i\)，而\(R^2\)接近0表示回归变量不能很好地预测\(Y_i\)。</p>
+
+    <h4>回归标准误差</h4>
+
+    <p><dfn>回归标准误差</dfn>（SER）是回归误差\(u_i\)的标准差估计量，它衡量了典型回归误差的大小：</p>
+
+    $$\begin{aligned}
+        SSR &= \sum\limits_{i=1}^n \hat u_i^2 \\
+        SER &= \sqrt{SSR \over n-2}
+    \end{aligned}$$
+</article>
+
+<footer>
+    lithdo的<a href="mailto:lithdo@gmail.com">Email</a>
+</footer>
+</body>
+</html>
