@@ -201,5 +201,6 @@ h1, h2, h3, h4 {
 }
 
 #toc ol {
-    padding-left: 25px;
+    padding-left: 20px;
+    list-style: none;
 }
