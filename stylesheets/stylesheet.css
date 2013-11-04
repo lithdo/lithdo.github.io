@@ -95,7 +95,7 @@ th, td {
 	text-align: center;
 }
 
-ol {
+article ol {
 	margin-left: 1em;
 }
 
@@ -198,4 +198,8 @@ h1, h2, h3, h4 {
 
 .MathJax_Display {
     text-shadow: rgba(50, 50, 50, .3) 1px 1px 2px;
+}
+
+#toc ol {
+    padding-left: 25px;
 }
