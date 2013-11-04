@@ -27,7 +27,7 @@ $(window).scroll(function (){
 	$("#toc").animate({top : offsetTop},{duration:500 , queue:false});
 });
 
-    $("body").append('<div id="tocSwitcher" class="float" onclick="$(\'#toc\').toggle(500);">目录</div>');
+    $("body").append('<div id="tocSwitcher" class="float" onclick="$(\'#toc\').toggle(500);"></div>');
     $("body").append('<div id="toc" class="float"></div>');
     updateTOC();
 

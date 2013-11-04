@@ -173,8 +173,10 @@ ol {
 }
 
 #tocSwitcher {
-	width: 3em;
-	text-align: center;
+    width: 45px;
+    height: 45px;
+    background: transparent url(../images/sideToolbar.gif) 0 0 no-repeat;
+    cursor: pointer;
 }
 
 #toc {
@@ -182,6 +184,7 @@ ol {
 	height: 12em;
 	/*width: 10em;*/
 	display: none;
+
 }
 
 dfn {
