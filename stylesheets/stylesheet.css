@@ -95,7 +95,7 @@ th, td {
 	text-align: center;
 }
 
-article ol {
+article ol, article ul {
 	margin-left: 1em;
 }
 
