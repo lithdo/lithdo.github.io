@@ -1,13 +1,13 @@
 body {
 	background: #cdd4dc;
-	font-family: "Open Sans", Helvetica, Arial, sans-serif;
-	color: #333;
 }
 
-header {
-	width: 690px;
-	margin-left: auto;
-	margin-right: auto;
+div#container {
+    width: 690px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    color: #333;
 }
 
 nav ul {
@@ -18,38 +18,17 @@ nav ul {
 }
 
 nav ul li {
-display: inline;
-margin: 0 5px
+    display: inline;
+    margin: 0 5px
 }
 
-section {
-	width: 690px;
-	background: white;	
-	margin-left: auto;
-	margin-right: auto;
+section, article {
+	background: white;
 	margin-top: 20px;
 	margin-bottom: 25px;	
 	padding: 20px;	
 	border-radius: 10px;	
 	box-shadow: 10px 10px 10px #555;
-}
-
-article {
-	width: 690px;
-	background: white;	
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 20px;
-	margin-bottom: 25px;	
-	padding: 20px;	
-	border-radius: 10px;	
-	box-shadow: 10px 10px 10px #555;
-}
-
-footer {
-	width: 690px;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 article>p {
