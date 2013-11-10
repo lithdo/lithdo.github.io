@@ -188,3 +188,14 @@ h1, h2, h3, h4 {
 a {
     text-decoration: none;
 }
+
+img {
+    box-shadow: 7px 7px 7px gray;
+    max-width:300px;
+}
+
+figcaption {
+    margin-top: 10px;
+    font-size: small;
+    font-weight: bold;
+}
