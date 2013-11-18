@@ -160,10 +160,8 @@ article ol, article ul {
 
 #toc {
 	left: 4em;
-	height: 12em;
-	/*width: 10em;*/
-	display: none;
-
+    max-width: 12em;
+    display: none;
 }
 
 dfn {
