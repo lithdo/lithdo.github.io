@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>lithdo | 小波消噪笔记</title>
+    <link rel="stylesheet" href="../stylesheets/stylesheet.css" type="text/css"/>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js" type="text/javascript"></script>
+    <script src="../scripts/toc.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div id="container">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">返回</a></li>
+                <li>|</li>
+                <li><a href="../index.html#articles">文章</a></li>
+                <li>·</li>
+                <li><a href="../index.html#notes">笔记</a></li>
+                <li>·</li>
+                <li><a href="../index.html#projects">项目</a></li>
+                <li>·</li>
+                <li><a href="../index.html#books">电子书</a></li>
+                <li>·</li>
+                <li><a href="../index.html#games">小游戏</a></li>
+            </ul>
+        </nav>
+
+        <h1>小波消噪笔记</h1>
+    </header>
+
+    <div id="content">
+        <article>
+            <h2>Matlab相关函数介绍</h2>
+
+            <h3>wavedec</h3>
+
+            <h4>简介</h4>
+            <p><code>wavedec</code>用于一维小波分解。</p>
+
+            <h4>语法</h4>
+            <pre>[C, L] = wavedec(X, N, 'wave_name')</pre>
+
+            <p>函数对一维信号<code>X</code>进行<code>N</code>级分解，使用的小波由<code>wave_name</code>指定。返回值<code>C</code>包含了各级分解的系数，<code>L</code>包含了各级系数的个数，它们的结构如下图所示：</p>
+
+            <figure>
+                <img src="../images/notes/wavelet_denoise/decomposition.gif" alt="decomposition"/>
+                <figcaption>3级分解的输出结构</figcaption>
+            </figure>
+            
+            <h4>例程</h4>
+<pre>% The current extension mode is zero-padding (see dwtmode).
+
+% Load original one-dimensional signal.
+load sumsin; s = sumsin;
+
+% Perform decomposition at level 3 of s using db1.
+[c,l] = wavedec(s,3,'db1');
+
+% Using some plotting commands,
+% the following figure is generated.
+subplot(2, 1, 1);
+plot(s);
+title('Original Signal s');
+subplot(2, 1, 2);
+plot(c);
+title('Wavelet Decomposition Structure');</pre>
+            
+            <figure>
+                <img src="../images/notes/wavelet_denoise/wavdec_example.gif" alt="wavdec_example"/>
+                <figcaption>例程的输出结果</figcaption>
+            </figure>
+
+        </article>
+    </div>
+
+    <footer>
+        lithdo的<a href="mailto:lithdo@gmail.com">Email</a>
+    </footer>
+</div>
+</body>
+</html>
