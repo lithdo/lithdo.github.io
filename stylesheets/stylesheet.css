@@ -187,6 +187,10 @@ a {
     text-decoration: none;
 }
 
+figure {
+    text-align: center;
+}
+
 img {
     box-shadow: 7px 7px 7px gray;
     max-width:300px;
