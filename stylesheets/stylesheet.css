@@ -46,16 +46,7 @@ code {
 	padding: 0 .3ex;
 }
 
-pre {
-	background-color: #202224;
-	color: #f8f8f8;
-	overflow-x: auto;
-	border-radius: .3em;
-	padding: 1em;
-	margin-bottom: 1.5em;
-}
-
-pre > code { 
+pre > code {
 	display: block; 
 	border: none; 
 	background-color: inherit; 
