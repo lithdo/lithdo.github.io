@@ -1,0 +1,23 @@
+keyword = 
+	"break|case|catch|classdef|continue|else|elseif|end|for|function|global|if|otherwise|parfor|persistent|return|spmd|switch|try|while"
+
+comment
+	start "%"
+
+number = 
+	'[+-]?((0x[[:xdigit:]]+)|(([[:digit:]]*\.)?[[:digit:]]+([eE][+-]?[[:digit:]]+)?))u?((int(?:8|16|32|64))|L)?'
+
+function =
+	'[a-zA-Z0-9_]+(?=\()'
+	
+variable = 
+	'[a-zA-Z0-9_]+'
+
+string
+	delim "'" "'"
+	escape "''"
+	
+state function start '\s*[a-zA-Z][\w]*(?=\s)(?!\s+\.?[*/+-:]\s+\w)(?!\s+=)' begin
+    comment start "%"
+    string delim '[[:blank:]]' '[^%;]*'
+end
