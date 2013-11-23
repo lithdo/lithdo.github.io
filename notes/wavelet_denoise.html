@@ -44,9 +44,9 @@
 
             <p>函数对一维信号<code>X</code>进行<code>N</code>级分解，使用的小波由<code>wave_name</code>指定。返回值<code>C</code>包含了各级分解的系数，<code>L</code>包含了各级系数的个数，它们的结构如下图所示：</p>
 
-            <figure>
+            <figure id="decomposition-structure-figure">
                 <img src="../images/notes/wavelet_denoise/decomposition.gif" alt="decomposition"/>
-                <figcaption>3级分解的输出结构</figcaption>
+                <figcaption>图1 3级分解的输出结构</figcaption>
             </figure>
             
             <h4>例程</h4>
@@ -69,7 +69,102 @@ title('Wavelet Decomposition Structure');</pre>
             
             <figure>
                 <img src="../images/notes/wavelet_denoise/wavdec_example.gif" alt="wavdec_example"/>
-                <figcaption>例程的输出结果</figcaption>
+                <figcaption>图2 例程的输出结果</figcaption>
+            </figure>
+
+            <h3>wden</h3>
+            <h4>简介</h4>
+            <p><code>wden</code>用于一维信号的小波消噪。</p>
+
+            <h4>语法</h4>
+            <pre>[XD, CXD, LXD] = wden(X, TPTR, SORH, SCAL, N, 'wname')</pre>
+
+            <p>该函数对信号<code>X</code>消噪，结果返回给<code>XD</code>。</p>
+
+            <p>另外两个返回值<code>[CXD, LXD]</code>是<code>XD</code>的小波分解结构（见<a href="#decomposition-structure-figure">图1</a>）。</p>
+
+            <p><code>TPTR</code>指定了阈值的计算方式，其取值如下：</p>
+            <ul>
+                <li><code>rigrsure</code></li>
+                <li><code>heursure</code></li>
+                <li><code>sqtwolog</code></li>
+                <li><code>minimaxi</code></li>
+            </ul>
+
+            <p><code>SORH</code>（取值为<code>s</code>或<code>h</code>）指定软阈值或硬阈值处理方式。</p>
+
+            <p><code>SCAL</code>指定阈值的缩放，其取值如下：</p>
+            <ul>
+                <li><code>one</code></li>
+                <li><code>sln</code></li>
+                <li><code>mln</code></li>
+            </ul>
+
+           <p><code>N</code>和<code>wname</code>指定了小波分解的层数和使用的小波。</p>
+
+            <h4>例程</h4>
+<pre>% The current extension mode is zero-padding (see dwtmode).
+
+% Set signal to noise ratio and set rand seed.
+snr = 3; init = 2055615866;
+
+% Generate original signal and a noisy version adding
+% a standard Gaussian white noise.
+[xref,x] = wnoise(3,11,snr,init);
+
+% De-noise noisy signal using soft heuristic SURE thresholding
+% and scaled noise option, on detail coefficients obtained
+% from the decomposition of x, at level 5 by sym8 wavelet.
+lev = 5;
+xd = wden(x,'heursure','s','one',lev,'sym8');
+
+% Plot signals.
+subplot(611), plot(xref), axis([1 2048 -10 10]);
+title('Original signal');
+subplot(612), plot(x), axis([1 2048 -10 10]);
+title(['Noisy signal - Signal to noise ratio = ',...
+num2str(fix(snr))]);
+subplot(613), plot(xd), axis([1 2048 -10 10]);
+title('De-noised signal - heuristic SURE');
+
+% De-noise noisy signal using soft SURE thresholding
+xd = wden(x,'heursure','s','one',lev,'sym8');
+
+% Plot signal.
+subplot(614), plot(xd), axis([1 2048 -10 10]);
+title('De-noised signal - SURE');
+
+% De-noise noisy signal using fixed form threshold with
+% a single level estimation of noise standard deviation.
+xd = wden(x,'sqtwolog','s','sln',lev,'sym8');
+
+% Plot signal.
+subplot(615), plot(xd), axis([1 2048 -10 10]);
+title('De-noised signal - Fixed form threshold');
+
+% De-noise noisy signal using minimax threshold with
+% a multiple level estimation of noise standard deviation.
+xd = wden(x,'minimaxi','s','sln',lev,'sym8');
+
+% Plot signal.
+subplot(616), plot(xd), axis([1 2048 -10 10]);
+title('De-noised signal - Minimax');
+
+% If many trials are necessary, it is better to perform
+% decomposition once and threshold it many times:
+
+% decomposition.
+[c,l] = wavedec(x,lev,'sym8');
+
+% threshold the decomposition structure [c,l].
+xd = wden(c,l,'minimaxi','s','sln',lev,'sym8');
+
+% Editing some graphical properties,
+% the following figure is generated.</pre>
+
+            <figure>
+                <img src="../images/notes/wavelet_denoise/wden_example.gif" alt="wden_example"/>
+                <figcaption>图3 例程的输出结果</figcaption>
             </figure>
 
         </article>
