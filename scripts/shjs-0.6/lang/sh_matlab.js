@@ -1,0 +1,61 @@
+if (! this.sh_languages) {
+    this.sh_languages = {};
+}
+sh_languages['matlab'] = [
+    [
+        [
+            /\b(?:break|case|catch|classdef|continue|else|elseif|end|for|function|global|if|otherwise|parfor|persistent|return|spmd|switch|try|while)\b/g,
+            'sh_keyword',
+            -1
+        ],
+        [
+            /%/g,
+            'sh_comment',
+            1
+        ],
+        [
+            /\b[+-]?(?:(?:0x[A-Fa-f0-9]+)|(?:(?:[\d]*\.)?[\d]+(?:[eE][+-]?[\d]+)?))u?(?:(?:int(?:8|16|32|64))|L)?\b/g,
+            'sh_number',
+            -1
+        ],
+        [
+            /[a-zA-Z0-9_]+(?=\()/g,
+            'sh_function',
+            -1
+        ],
+        [
+            /[a-zA-Z0-9_]+/g,
+            'sh_variable',
+            -1
+        ],
+        [
+            /'/g,
+            'sh_string',
+            2
+        ]
+    ],
+    [
+        [
+            /$/g,
+            null,
+            -2
+        ]
+    ],
+    [
+        [
+            /$/g,
+            null,
+            -2
+        ],
+        [
+            /''(?:''|')/g,
+            null,
+            -1
+        ],
+        [
+            /'/g,
+            'sh_string',
+            -2
+        ]
+    ]
+];
