@@ -46,18 +46,17 @@
             <pre class="sh_matlab">[C, L] = wavedec(X, N, 'wave_name')</pre>
 
             <ul>
-                <li><code>X</code>：一维信号</li>
-                <li><code>N</code>：分解层数</li>
-                <li><code>wave_name</code>：小波名，如“db4”、“haar”等</li>
-                <li>
-                    <code>[C, L]</code>：分解后各级的系数，其结构如下图：
+                <li><p><code>X</code>：一维信号。</p></li>
+                <li><p><code>N</code>：分解层数。</p></li>
+                <li><p><code>wave_name</code>：小波名，如“db4”、“haar”等。</p></li>
+                <li><p><code>[C, L]</code>：分解后各级的系数，其结构如下图：</p>
 
                     <figure id="decomposition-structure-figure">
                         <img src="../images/notes/wavelet_denoise/decomposition.gif" alt="decomposition"/>
                         <figcaption>图1 3级分解的输出结构</figcaption>
                     </figure>
 
-                    图中\(cA_i\)是第i层分解后的低频系数，\(cD_i\)是高频系数。
+                    <p>图中\(cA_i\)是第i层分解后的低频系数，\(cD_i\)是高频系数。</p>
                 </li>
             </ul>
             
@@ -65,7 +64,8 @@
 <pre class="sh_matlab">% The current extension mode is zero-padding (see dwtmode).
 
 % Load original one-dimensional signal.
-load sumsin; s = sumsin;
+load sumsin;
+s = sumsin;
 
 % Perform decomposition at level 3 of s using db1.
 [c,l] = wavedec(s,3,'db1');
@@ -91,28 +91,34 @@ title('Wavelet Decomposition Structure');</pre>
             <h4>语法</h4>
             <pre class="sh_matlab">[XD, CXD, LXD] = wden(X, TPTR, SORH, SCAL, N, 'wname')</pre>
 
-            <p>该函数对信号<code>X</code>消噪，结果返回给<code>XD</code>。</p>
-
-            <p>另外两个返回值<code>[CXD, LXD]</code>是<code>XD</code>的小波分解结构（见<a href="#decomposition-structure-figure">图1</a>）。</p>
-
-            <p><code>TPTR</code>指定了阈值的计算方式，其取值如下：</p>
             <ul>
-                <li><code>rigrsure</code></li>
-                <li><code>heursure</code></li>
-                <li><code>sqtwolog</code></li>
-                <li><code>minimaxi</code></li>
+                <li><p>该函数对信号<code>X</code>消噪，结果返回给<code>XD</code>。</p></li>
+
+                <li><p>另外两个返回值<code>[CXD, LXD]</code>是<code>XD</code>的小波分解结构（见<a href="#decomposition-structure-figure">图1</a>）。</p></li>
+
+                <li><p><code>TPTR</code>指定了阈值的计算方式，其取值如下： </p>
+
+                    <ul>
+                        <li><code>rigrsure</code></li>
+                        <li><code>heursure</code></li>
+                        <li><code>sqtwolog</code></li>
+                        <li><code>minimaxi</code></li>
+                    </ul>
+                </li>
+
+                <li><p><code>SORH</code>（取值为<code>s</code>或<code>h</code>）指定软阈值或硬阈值处理方式。</p></li>
+
+                <li><p><code>SCAL</code>指定阈值的缩放，其取值如下：</p>
+
+                    <ul>
+                        <li><code>one</code></li>
+                        <li><code>sln</code></li>
+                        <li><code>mln</code></li>
+                    </ul>
+                </li>
+
+               <li><p><code>N</code>和<code>wname</code>指定了小波分解的层数和使用的小波。</p></li>
             </ul>
-
-            <p><code>SORH</code>（取值为<code>s</code>或<code>h</code>）指定软阈值或硬阈值处理方式。</p>
-
-            <p><code>SCAL</code>指定阈值的缩放，其取值如下：</p>
-            <ul>
-                <li><code>one</code></li>
-                <li><code>sln</code></li>
-                <li><code>mln</code></li>
-            </ul>
-
-           <p><code>N</code>和<code>wname</code>指定了小波分解的层数和使用的小波。</p>
 
             <h4>例程</h4>
 <pre class="sh_matlab">% The current extension mode is zero-padding (see dwtmode).
