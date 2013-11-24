@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>lithdo | GNU Source-highlight学习笔记</title>
+    <script src="../scripts/jquery-1.10.1.min.js"></script>
+    <script src="../scripts/toc.js"></script>
+    <script src="../scripts/shjs-0.6/sh_main.js"></script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default" type="text/javascript"></script>
+    <link href="../stylesheets/stylesheet.css" rel="stylesheet" type="text/css"/>
+    <link href="../scripts/shjs-0.6/css/sh_lithdo.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body onload="sh_highlightDocument('../scripts/shjs-0.6/lang/', '.js');">
+<div id="container">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">返回</a></li>
+                <li>|</li>
+                <li><a href="../index.html#articles">文章</a></li>
+                <li>·</li>
+                <li><a href="../index.html#notes">笔记</a></li>
+                <li>·</li>
+                <li><a href="../index.html#projects">项目</a></li>
+                <li>·</li>
+                <li><a href="../index.html#books">电子书</a></li>
+                <li>·</li>
+                <li><a href="../index.html#games">小游戏</a></li>
+            </ul>
+        </nav>
+
+        <h1>GNU Source-highlight学习笔记</h1>
+    </header>
+
+    <div id="content">
+        <article>
+            <h2>简介</h2>
+            <p>GNU Source-highlight可以将C、Java等语言的源代码转换成HTML、LaTeX等格式的文档，并带有语法高亮的效果。</p>
+
+            <p>它主要用正则表达式来定义（或理解为识别）语言的各类元素，并用CSS样式表为各类元素指定样式。</p>
+
+            <p>定义某一语言的所有正则表达式放在一个.lang文件中，如c.lang、java.lang等。因此，一个.lang文件定义了一种语言。下面就讲解如何编写.lang文件。</p>
+
+            <h2>定义语言</h2>
+
+            <h3>基本语句</h3>
+            <p>定义语言元素的基本语句如下：</p>
+            <pre class="sh_langdef">element = 'regular expression'</pre>
+            <ul>
+                <li><p><code>element</code>：某一类元素的名称，通常有如下几类元素：</p>
+                    <ul>
+                        <li><code>keyword</code>：关键字，如if、else、for等</li>
+                        <li><code>type</code>：类型，如int、double、char等</li>
+                        <li><code>variable</code>：变量名</li>
+                        <li><code>string</code>：字符串</li>
+                        <li><code>number</code>：数字</li>
+                        <li><code>function</code>：函数名</li>
+                        <li><code>comment</code>：注释</li>
+                    </ul>
+                </li>
+                <li><p><code>'regular expression'</code>识别该类元素的正则表达式。表达式必须用双引号（<code>"</code>）、单引号（<code>'</code>）或反引号（<code>`</code>）包围。它们的区别如下：</p>
+                    <ul>
+                        <li><code>"expression"</code>：普通字符串。</li>
+                        <li><code>'expression'</code>：正则表达式，但不支持捕获分组。</li>
+                        <li><code>`expression`</code>：正则表达式，支持捕获分组。</li>
+                    </ul>
+                </li>
+            </ul>
+        </article>
+    </div>
+
+    <footer>
+        lithdo的<a href="mailto:lithdo@gmail.com">Email</a>
+    </footer>
+</div>
+</body>
+</html>
