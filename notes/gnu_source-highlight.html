@@ -38,35 +38,161 @@
             <h2>简介</h2>
             <p>GNU Source-highlight可以将C、Java等语言的源代码转换成HTML、LaTeX等格式的文档，并带有语法高亮的效果。</p>
 
-            <p>它主要用正则表达式来定义（或理解为识别）语言的各类元素，并用CSS样式表为各类元素指定样式。</p>
+            <p>它主要用正则表达式来定义（或识别）语言的各类元素，并用CSS样式表为各类元素指定样式。</p>
 
             <p>定义某一语言的所有正则表达式放在一个.lang文件中，如c.lang、java.lang等。因此，一个.lang文件定义了一种语言。下面就讲解如何编写.lang文件。</p>
 
             <h2>定义语言</h2>
 
             <h3>基本语句</h3>
-            <p>定义语言元素的基本语句如下：</p>
+            <h4>语法</h4>
             <pre class="sh_langdef">element = 'regular expression'</pre>
-            <ul>
-                <li><p><code>element</code>：某一类元素的名称，通常有如下几类元素：</p>
+            <dl>
+                <dt><code>element</code></dt>
+                <dd><p>定义元素名，常用的有以下几类元素：</p>
                     <ul>
-                        <li><code>keyword</code>：关键字，如if、else、for等</li>
-                        <li><code>type</code>：类型，如int、double、char等</li>
+                        <li><code>keyword</code>：关键字</li>
+                        <li><code>type</code>：类型名</li>
                         <li><code>variable</code>：变量名</li>
                         <li><code>string</code>：字符串</li>
                         <li><code>number</code>：数字</li>
                         <li><code>function</code>：函数名</li>
                         <li><code>comment</code>：注释</li>
                     </ul>
+                </dd>
+                <dt><code>'regular expression'</code></dt>
+                <dd><p>识别该类元素的正则表达式。表达式必须用双引号（<code>"</code>）、单引号（<code>'</code>）或反引号（<code>`</code>）包围。它们的区别如下：</p>
+                    <dl>
+                        <dt><code>"expression"</code></dt>
+                        <dd><p>普通字符串。特殊字符<code>|</code>用于选择。</p></dd>
+                        <dt><code>'expression'</code></dt>
+                        <dd><p>正则表达式，不支持捕获分组。</p></dd>
+                        <dt><code>`expression`</code></dt>
+                        <dd><p>正则表达式，支持捕获分组。</p></dd>
+                    </dl>
+                </dd>
+            </dl>
+
+            <h4>例子</h4>
+            <ol>
+                <li id="example1-1"><p>定义C语言的关键字：</p>
+<pre class="sh_langdef">keyword =
+    "break|case|catch|cdecl|const|continue|default|do",
+    "else|enum|extern|for|goto|if|pascal",
+    "register|return|sizeof|static|struct",
+    "switch|typedef|union|volatile|while"
+</pre>
                 </li>
-                <li><p><code>'regular expression'</code>识别该类元素的正则表达式。表达式必须用双引号（<code>"</code>）、单引号（<code>'</code>）或反引号（<code>`</code>）包围。它们的区别如下：</p>
-                    <ul>
-                        <li><code>"expression"</code>：普通字符串。</li>
-                        <li><code>'expression'</code>：正则表达式，但不支持捕获分组。</li>
-                        <li><code>`expression`</code>：正则表达式，支持捕获分组。</li>
-                    </ul>
+                <li id="example1-2"><p>定义C语言的数字：</p>
+<pre class="sh_langdef">number =
+    '\<[+-]?((0x[[:xdigit:]]+)|(([[:digit:]]*\.)?[[:digit:]]+([eE][+-]?[[:digit:]]+)?))u?((int(?:8|16|32|64))|L)?\>'
+</pre>
                 </li>
-            </ul>
+            </ol>
+
+            <h4>注意</h4>
+            <ol>
+                <li><p>对同一元素的多条定义语句会累加，而不会覆盖。例如，下面的语句等效于<a href="#example1-1">例1</a>：</p>
+<pre class="sh_langdef">keyword = "break|case|catch|cdecl|const|continue|default|do"
+keyword = "else|enum|extern|for|goto|if|pascal"
+keyword = "register|return|sizeof|static|struct"
+keyword = "switch|typedef|union|volatile|while"
+</pre>
+                </li>
+                <li><p>语句和正则表达式中的换行符会被忽略，因此可以适当添加换行来提高代码可读性。例如，下面的语句等效于<a href="#example1-2">例2</a>：</p>
+<pre class="sh_langdef">number =
+    '\<[+-]?
+((0x[[:xdigit:]]+)|
+(([[:digit:]]*\.)?[[:digit:]]+
+([eE][+-]?[[:digit:]]+)?))u?((int(?:8|16|32|64))|L)?\>'
+</pre>
+                </li>
+
+                <li><p>行中的<code>#</code>及其后面的字符为注释。</p></li>
+                <li><p>若多条语句匹配同一处代码，则先出现的语句优先级更高。例如，下面的定义中，<code>keyword</code>和<code>variable</code>都匹配字符串<code>"while"</code>，但<code>"while"</code>是<code>keyword</code>元素。</p>
+<pre class="sh_langdef">keyword = "switch|typedef|union|volatile|while"
+variable = '[a-zA-Z0-9_]+'
+</pre>
+                </li>
+            </ol>
+
+            <h3>start语句</h3>
+            <h4>语法</h4>
+            <pre class="sh_langdef">element start 'regexp'</pre>
+            <p>表示<code>element</code>元素的范围从<code>'regexp'</code>开始直到行末。</p>
+
+            <h4>例子</h4>
+            <ol>
+                <li id="example2-1"><p>定义C++风格的注释：</p>
+                    <pre class="sh_langdef">comment start "//"</pre>
+                </li>
+            </ol>
+
+            <h3>delim语句</h3>
+            <h4>语法</h4>
+            <pre class="sh_langdef">element delim 'left delim' 'right delim'
+    [escape "escape-character"]
+    [multiline] [nested]
+</pre>
+            <p>表示<code>element</code>元素的范围从<code>'left delim'</code>开始，到<code>'right delim'</code>结束。</p>
+
+            <dl>
+                <dt><code>escape "escape-character"</code></dt>
+                <dd><p>可选项，表示转义字符。例如，要定义C语言字符串，从<code>"</code>开始，到<code>"</code>结束。在字符串中间要表示<code>"</code>，则要用转义字符<code>\</code>来转义：<code>\"</code>。字符串的定义见<a href="#example3-1">例1</a>.</p></dd>
+                <dt><code>multiline</code></dt>
+                <dd><p>可选项，表示元素的范围可以跨行。</p></dd>
+                <dt><code>nested</code></dt>
+                <dd><p>可选项，表示元素可以嵌套。</p></dd>
+            </dl>
+
+            <h4>例子</h4>
+            <ol>
+                <li id="example3-1"><p>定义C语言的字符串：</p>
+<pre class="sh_langdef">string delim "\"" "\"" escape "\\"</pre>
+                </li>
+                <li id="example3-2"><p>定义C风格的注释：</p>
+<pre class="sh_langdef">comment delim "/*" "*/" multiline nested</pre>
+                </li>
+            </ol>
+
+            <h3>include语句</h3>
+            <h4>语法</h4>
+            <pre class="sh_langdef">include "another_file.lang"</pre>
+
+            <p>用于将其他.lang文件包含进来，类似于C语言的<code>#include</code>语句。它有助于定义语句的重用，例如，C、C++和Java的注释都相同，可以将注释元素的定义放到c_comment.lang文件里，然后在各语言的定义文件里写一条包含语句即可。</p>
+
+            <h4>例子</h4>
+            <ol>
+                <li><p>将C/C++风格的注释包含进java.lang中：</p>
+<pre class="sh_langdef"># java.lang
+include "c_comment.lang"</pre>
+                </li>
+            </ol>
+
+
+            <h3>state/environment语句</h3>
+            <p>有些元素只在其他元素内部才有意义，例如想对C语言注释内的URL着色时，URL元素必须出现在注释内部。state/environment语句可以解决这种问题。</p>
+
+            <h4>语法</h4>
+<pre class="sh_langdef">state|environment &lt;standard definition> begin
+    &lt;other definitions>
+end</pre>
+
+            <p>由<code>standard definition</code>定义的元素的范围构成了一个环境。在该环境内部时，<code>other definitions</code>会生效，而环境外面的定义语句会失效。</p>
+
+            <p><code>state</code>与<code>environment</code>的区别是：state内未匹配的元素不着色，而environment内的未匹配的元素按<code>standard definiton</code>的元素样式着色。</p>
+
+            <p>该语句可以嵌套。</p>
+
+            <h4>例子</h4>
+            <ol>
+                <li><p>定义注释内的URL：</p>
+<pre class="sh_langdef">environment comment delim "/*" "*/" multiline nested begin
+    include "url.lang"
+end</pre>
+                </li>
+            </ol>
+
         </article>
     </div>
 
