@@ -6,6 +6,7 @@
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="../scripts/toc.js"></script>
     <script src="../scripts/shjs-0.6/sh_main.js"></script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default" type="text/javascript"></script>
     <link href="../stylesheets/stylesheet.css" rel="stylesheet" type="text/css"/>
     <link href="../scripts/shjs-0.6/css/sh_lithdo.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -44,12 +45,21 @@
             <h4>语法</h4>
             <pre class="sh_matlab">[C, L] = wavedec(X, N, 'wave_name')</pre>
 
-            <p>函数对一维信号<code>X</code>进行<code>N</code>级分解，使用的小波由<code>wave_name</code>指定。返回值<code>C</code>包含了各级分解的系数，<code>L</code>包含了各级系数的个数，它们的结构如下图所示：</p>
+            <ul>
+                <li><code>X</code>：一维信号</li>
+                <li><code>N</code>：分解层数</li>
+                <li><code>wave_name</code>：小波名，如“db4”、“haar”等</li>
+                <li>
+                    <code>[C, L]</code>：分解后各级的系数，其结构如下图：
 
-            <figure id="decomposition-structure-figure">
-                <img src="../images/notes/wavelet_denoise/decomposition.gif" alt="decomposition"/>
-                <figcaption>图1 3级分解的输出结构</figcaption>
-            </figure>
+                    <figure id="decomposition-structure-figure">
+                        <img src="../images/notes/wavelet_denoise/decomposition.gif" alt="decomposition"/>
+                        <figcaption>图1 3级分解的输出结构</figcaption>
+                    </figure>
+
+                    图中\(cA_i\)是第i层分解后的低频系数，\(cD_i\)是高频系数。
+                </li>
+            </ul>
             
             <h4>例程</h4>
 <pre class="sh_matlab">% The current extension mode is zero-padding (see dwtmode).
