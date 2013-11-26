@@ -123,3 +123,9 @@ dt {
     display: list-item;
     margin-left: 1em;
 }
+
+@media screen and  (max-width: 650px) {
+    #container {
+        width: auto;
+    }
+}
