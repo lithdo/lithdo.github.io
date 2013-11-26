@@ -1,6 +1,6 @@
 $(document).ready(function () {
     function updateTOC() {
-        var outline = HTML5Outline(document.getElementById("content"));
+        var outline = HTML5Outline(document.body);
         var toc = outline.asHTML(true);
         $("#toc").html(toc);
     }
