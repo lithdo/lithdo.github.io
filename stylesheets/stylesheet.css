@@ -2,7 +2,7 @@ body {
 	background: #cdd4dc;
 }
 
-div#container {
+#container {
     width: 690px;
     margin-left: auto;
     margin-right: auto;
@@ -22,7 +22,7 @@ nav ul li {
     margin: 0 5px
 }
 
-section, article {
+#content>section, #content>article {
 	background: white;
 	margin-top: 20px;
 	margin-bottom: 25px;	
