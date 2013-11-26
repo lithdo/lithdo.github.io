@@ -126,6 +126,6 @@ dt {
 
 @media screen and  (max-width: 650px) {
     #container {
-        width: auto;
+        width: inherit;
     }
 }
