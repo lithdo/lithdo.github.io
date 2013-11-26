@@ -6,10 +6,12 @@
     <script src="../scripts/jquery-1.10.1.min.js" type="text/javascript"></script>
     <script src="../scripts/outliner.0.5.0.62.min.js"></script>
     <script src="../scripts/toc.js" type="text/javascript"></script>
+    <script src="../scripts/shjs-0.6/sh_main.js"></script>
     <link rel="stylesheet" href="../stylesheets/stylesheet.css" type="text/css"/>
+    <link href="../scripts/shjs-0.6/css/sh_lithdo.css" rel="stylesheet" type="text/css"/>
 </head>
 
-<body>
+<body onload="sh_highlightDocument('../scripts/shjs-0.6/lang/', '.js');">
 <div id="container">
 <header>
     <nav>
@@ -33,9 +35,131 @@
 
 <div id="content">
 <article>
-    <h2>Hello, EPUB</h2>
+    <seciton>
+        <h1>简介</h1>
+        <p>EPUB是电子书格式，其内容由XHTML文件构成，排版样式由CSS指定。</p>
+    </seciton>
 
-    <p>首先，不讲任何理论知识，直接动手做一个最简单的epub文件，其内容为“Hello, EPUB”。</p>
+    <section>
+        <h1>Hello, EPUB</h1>
+        <p>首先，不讲任何理论，直接动手做一个epub文件，其内容为“Hello, EPUB”。</p>
+
+        <ol>
+            <li>
+                <p>XHTML文件</p>
+                <p>创建hello.xhtml，内容如下：</p>
+<pre class="sh_html">
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+&lt;html xmlns="http://www.w3.org/1999/xhtml">
+	&lt;head>
+	  	&lt;title>Hello EPUB&lt;/title>
+	&lt;/head>
+
+	&lt;body>
+		Hello, EPUB!
+	&lt;/body>
+
+&lt;/html>
+</pre>
+                <p>接着只要将其封装为EPUB格式，就能在EPUB阅读器上看啦。</p>
+            </li>
+
+            <li>
+                <p>封装EPUB</p>
+
+                <p>创建文件夹book，其结构如下：</p>
+
+<pre class="sh_dirtree">
+book/
+|---mimetype            % 类型说明文件，告诉阅读器这是一个EPUB书；照搬即可
+|
+|---META-INF/           % 用于告诉阅读器content.opf在哪；照搬即可
+|   |---container.xml
+|
+|---OEBPS/              % 电子书的元数据、内容、资源等的所在地
+    |---content.opf     % 元数据和资源的清单，按需编辑
+    |---toc.ncx         % 目录，按需编辑
+    |---hello.xhtml     % 书的内容，按需编辑
+</pre>
+
+                <ul>
+                    <li><p>mimetype</p>
+                        <p>mimetype是类型说明文件，告诉阅读器这是一个EPUB书，其内容如下：</p>
+                        <pre class="sh_sourceCode">application/epub+zip</pre>
+                        <p>mimetype在所有EPUB书中都一样，照搬即可。</p>
+                    </li>
+
+                    <li><p>META-INF/container.xml</p>
+                        <p>container.xml用于告诉阅读器opf文件（资源清单文件，通常是content.opf）在哪，其内容如下：</p>
+<pre class="sh_xml">&lt;?xml version="1.0"?>
+&lt;container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container">
+    &lt;rootfiles>
+        &lt;rootfile full-path="OEBPS/content.opf" media-type="application/oebps-package+xml"/>
+   &lt;/rootfiles>
+&lt;/container></pre>
+
+                        <p>container.xml在所有EPUB中都一样，照搬即可。</p>
+                    </li>
+
+                    <li><p>OEBPS/content.opf</p>
+                        <p>content.opf是电子书的元数据和资源的汇总清单，其内容如下：</p>
+
+<pre class="sh_xml">&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;package xmlns="http://www.idpf.org/2007/opf" unique-identifier="BookID" version="2.0">
+    &lt;metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+        &lt;dc:title>我的第一本书&lt;/dc:title>
+        &lt;dc:creator opf:role="aut">lithdo&lt;/dc:creator>
+        &lt;dc:publisher>lithdo.github.io&lt;/dc:publisher>
+        &lt;dc:identifier id="BookID" opf:scheme="UUID">015ffaec-9340-42f8-b163-a0c5ab7d0611&lt;/dc:identifier>
+    &lt;/metadata>
+
+    &lt;manifest>
+        &lt;item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>
+        &lt;item id="hello" href="hello.xhtml" media-type="application/xhtml+xml"/>
+    &lt;/manifest>
+
+    &lt;spine toc="ncx">
+        &lt;itemref idref="hello"/>
+    &lt;/spine>
+&lt;/package>
+</pre>
+                    </li>
+
+                    <li><p>OEBPS/toc.ncx</p>
+
+                        <p>toc.ncx是目录，阅读器根据它来显示目录栏，其内容入下：</p>
+
+<pre class="sh_xml">&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;!DOCTYPE ncx PUBLIC "-//NISO//DTD ncx 2005-1//EN"
+"http://www.daisy.org/z3986/2005/ncx-2005-1.dtd">
+
+&lt;ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+    &lt;head>
+        &lt;meta name="dtb:uid" content="015ffaec-9340-42f8-b163-a0c5ab7d0611"/>
+    &lt;/head>
+
+    &lt;docTitle>
+        &lt;text>我的第一本书&lt;/text>
+    &lt;/docTitle>
+
+    &lt;navMap>
+        &lt;navPoint id="navPoint-1" playOrder="1">
+            &lt;navLabel>&lt;text>Hello, EPUB&lt;/text>&lt;/navLabel>
+            &lt;content src="hello.xhtml"/>
+        &lt;/navPoint>
+    &lt;/navMap>
+&lt;/ncx>
+</pre>
+                    </li>
+
+
+                </ul>
+            </li>
+        </ol>
+    </section>
 </article>
 </div>
 
