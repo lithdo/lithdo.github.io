@@ -3,7 +3,7 @@ body {
 }
 
 #container {
-    width: 690px;
+    width: 790px;
     margin-left: auto;
     margin-right: auto;
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
@@ -29,10 +29,6 @@ nav ul li {
 	padding: 20px;	
 	border-radius: 10px;	
 	box-shadow: 10px 10px 10px #555;
-}
-
-article>p {
-  text-indent: 2em;
 }
 
 pre, code {
