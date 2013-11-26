@@ -1,0 +1,19 @@
+# directory tree
+# Example:
+#
+# root/             % root directory
+# |---dir1/         % dir1
+# |   |---file1
+# |---dir2/
+# |   |---file2
+# |---file3         % file3 in root directory
+#
+
+comment start
+	"%"
+	
+dir =
+	'[^ |-].*/[^ %]*'
+
+nondir =
+	'[^ |-][^ /%]*'

@@ -20,7 +20,7 @@ pre.sh_sourceCode .sh_type {
 }
 
 pre.sh_sourceCode .sh_string {
-    color: rgb(230, 89, 213);
+    color: #E659D5;
     font-weight: normal;
     font-style: italic;
 }
@@ -139,3 +139,14 @@ pre.sh_sourceCode .sh_value {
     font-style: normal;
 }
 
+pre.sh_sourceCode .sh_dir {
+    color: #388EEB;
+    font-weight: bold;
+    font-style: normal;
+}
+
+pre.sh_sourceCode .sh_nondir {
+    color: #bd8d8b;
+    font-weight: normal;
+    font-style: normal;
+}
