@@ -61,26 +61,6 @@ th, td {
 	text-align: center;
 }
 
-.float {
-	position: absolute;
-	top: 280px;
-	background: #ddd;
-	opacity: 0.7;
-}
-
-#tocSwitcher {
-    width: 45px;
-    height: 45px;
-    background: transparent url(../images/sideToolbar.gif) 0 0 no-repeat;
-    cursor: pointer;
-}
-
-#toc {
-	left: 4em;
-    max-width: 12em;
-    display: none;
-}
-
 dfn {
     font-weight: bold;
     font-style: normal;
@@ -130,10 +110,30 @@ dt {
     }
 }
 
-#back-top {
+.float {
     position: fixed;
-    bottom: 50px;
+    opacity: 0.7;
+}
+
+#tocSwitcher {
+    bottom: 30px;
     right: 50px;
+    width: 45px;
+    height: 45px;
+    background: transparent url(../images/sideToolbar.gif) 0 0 no-repeat;
+    cursor: pointer;
+}
+
+#toc {
+    bottom: 30px;
+    right: 120px;
+    max-width: 12em;
+    display: none;
+}
+
+#back-top {
+    bottom: 80px;
+    right: 35px;
 }
 
 #back-top a {
@@ -156,7 +156,7 @@ dt {
     height: 80px;
     display: block;
     margin-bottom: 7px;
-    background: #cdd4dc url(../images/up-arrow.png) no-repeat center center;
+    background: transparent url(../images/up-arrow.png) no-repeat center center;
     border-radius: 15px;
     transition: 1s;
 }
