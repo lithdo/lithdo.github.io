@@ -164,3 +164,23 @@ dt {
 #back-top a:hover span {
     background-color: #888;
 }
+
+a.duokan-footnote img {
+    box-shadow: none;
+}
+
+p.prologue {
+    font-family: "仿宋" "华文仿宋";
+    font-weight: bold;
+    font-style: normal;
+    font-size: 120%;
+}
+
+p.content {
+    font-family: "楷体" "华文楷体";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 120%;
+
+    text-align: center;
+}
