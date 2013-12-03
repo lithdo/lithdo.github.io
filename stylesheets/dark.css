@@ -1,0 +1,222 @@
+body {
+	background: #343a40;
+    color: #b5ada5;
+    margin: 0;
+}
+
+#container {
+    width: 790px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+nav ul {
+	list-style: none;
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
+	padding: 5px 0
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 5px
+}
+
+pre, code {
+	font-family: anonymous-pro, Inconsolata, inconsolata, "Source Code Pro", Terminus, Consolas, "Liberation Mono", "Bitstream Vera Sans Mono", "Andale Mono WT", "Andale Mono", Monaco, "Lucida Console", "Lucida Sans Typewriter", "Nimbus Mono L", "Courier New", Courier, monospace;
+}
+
+code {
+	background: #5C5C5C;
+    color: #ccc;
+	border: 1px solid #928F8D;
+	border-radius: .2em;
+	padding: 0 .3ex;
+}
+
+pre > code {
+	display: block; 
+	border: none; 
+	background-color: inherit; 
+}
+
+table {
+	border-collapse:collapse;
+}
+
+table,th, td {
+	border: 1px solid black;
+    border-color: #928F8D;
+}
+
+th, td {
+	padding: .3em;
+	text-align: center;
+}
+
+dfn {
+    font-weight: bold;
+    font-style: normal;
+}
+
+h1, h2, h3, h4 {
+    color: #ccc;
+    text-shadow: rgba(100, 100, 100, .3) 1px 1px 2px;
+}
+
+.MathJax_Display {
+    text-shadow: rgba(50, 50, 50, .3) 1px 1px 2px;
+}
+
+#toc ol {
+    padding-left: 20px;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+figure {
+    text-align: center;
+}
+
+img {
+    box-shadow: 7px 7px 7px gray;
+    max-width:300px;
+}
+
+figcaption {
+    margin-top: 10px;
+    font-size: small;
+    font-weight: bold;
+}
+
+dt {
+    display: list-item;
+    margin-left: 1em;
+}
+
+@media only screen 
+    and (max-width : 700px) {
+    #container {
+        width: inherit;
+    }
+    #content>section, #content>article {
+        padding: 5px;
+        border-radius: 5px;
+        box-shadow: none;
+    }
+    body {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media only screen 
+    and (min-device-width : 320px) 
+    and (max-device-width : 700px) {
+    #container {
+        width: inherit;
+    }
+    #content>section, #content>article {
+        padding: 5px;
+        border-radius: 5px;
+        box-shadow: none;
+    }
+    body {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.float {
+    position: fixed;
+    opacity: 0.7;
+}
+
+#tocSwitcher {
+    bottom: 30px;
+    right: 50px;
+    width: 45px;
+    height: 45px;
+    background: transparent url(../images/sideToolbar.gif) 0 0 no-repeat;
+    cursor: pointer;
+}
+
+#toc {
+    bottom: 30px;
+    right: 120px;
+    max-width: 12em;
+    display: none;
+}
+
+#back-top {
+    bottom: 80px;
+    right: 35px;
+}
+
+#back-top a {
+    width: 80px;
+    display: block;
+    text-align: center;
+    font: 11px/100% Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #bbb;
+    transition: 1s;
+}
+
+#back-top a:hover {
+    color: #000;
+}
+
+#back-top span {
+    width: 80px;
+    height: 80px;
+    display: block;
+    margin-bottom: 7px;
+    background: transparent url(../images/up-arrow.png) no-repeat center center;
+    border-radius: 15px;
+    transition: 1s;
+}
+
+#back-top a:hover span {
+    background-color: #888;
+}
+
+a.duokan-footnote img {
+    box-shadow: none;
+}
+
+p.prologue {
+    font-family: "仿宋" "华文仿宋";
+    font-weight: bold;
+    font-style: normal;
+    font-size: 120%;
+}
+
+p.content {
+    font-family: "楷体" "华文楷体";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 120%;
+
+    text-align: center;
+}
+
+ol.duokan-footnote-content {
+    font-size: 90%;
+}
+
+pre {
+    background-color: #272b2f;
+    color: #f8f8f8;
+    overflow-x: auto;
+    border-radius: 15px;
+    border-bottom:1px solid #535f6b;
+    box-shadow:0 1px 5px rgba(0,0,0,0.4) inset, 0 0 20px rgba(0,0,0,0.2) inset;
+    padding: 1em;
+    margin-bottom: 1.5em;
+}
