@@ -8,7 +8,9 @@
     <script src="scripts/jquery-1.10.1.min.js" type="text/javascript"></script>
     <script src="scripts/outliner.0.5.0.62.min.js"></script>
     <script src="scripts/toc.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="stylesheets/stylesheet.css" type="text/css"/>
+    <script type="text/javascript" src="../scripts/styleswitcher.js"></script>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" title="default" />
+    <link rel="alternate stylesheet" type="text/css" href="../stylesheets/dark.css" title="alternate" />
 </head>
 
 <body>
@@ -29,6 +31,8 @@
             <li><a href="#books">电子书</a></li>
             <li>·</li>
             <li><a href="#games">小游戏</a></li>
+            <li>·</li>
+            <li>（<a href="#" onclick="setActiveStyleSheet('default'); return false;">开灯</a>|<a href="#" onclick="setActiveStyleSheet('alternate'); return false;">关灯</a>）</li>
         </ul>
     </nav>
 </header>

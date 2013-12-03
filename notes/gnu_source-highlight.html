@@ -8,7 +8,9 @@
     <script src="../scripts/toc.js"></script>
     <script src="../scripts/shjs-0.6/sh_main.js"></script>
     <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default" type="text/javascript"></script>
-    <link href="../stylesheets/stylesheet.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../scripts/styleswitcher.js"></script>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" title="default" />
+    <link rel="alternate stylesheet" type="text/css" href="../stylesheets/dark.css" title="alternate" />
     <link href="../scripts/shjs-0.6/css/sh_lithdo.css" rel="stylesheet" type="text/css"/>
 </head>
 
@@ -28,6 +30,8 @@
                 <li><a href="../index.html#books">电子书</a></li>
                 <li>·</li>
                 <li><a href="../index.html#games">小游戏</a></li>
+            <li>·</li>
+            <li>（<a href="#" onclick="setActiveStyleSheet('default'); return false;">开灯</a>|<a href="#" onclick="setActiveStyleSheet('alternate'); return false;">关灯</a>）</li>
             </ul>
         </nav>
 

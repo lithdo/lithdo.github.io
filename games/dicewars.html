@@ -3,7 +3,9 @@
 <head>
     <meta charset='utf-8'>
     <title>lithdo | 骰子战争</title>
-    <link rel="stylesheet" href="../stylesheets/stylesheet.css" type="text/css"/>
+    <script type="text/javascript" src="../scripts/styleswitcher.js"></script>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" title="default" />
+    <link rel="alternate stylesheet" type="text/css" href="../stylesheets/dark.css" title="alternate" />
 </head>
 
 <body>
@@ -22,6 +24,8 @@
                 <li><a href="../index.html#books">电子书</a></li>
                 <li>·</li>
                 <li><a href="../index.html#games">小游戏</a></li>
+            <li>·</li>
+            <li>（<a href="#" onclick="setActiveStyleSheet('default'); return false;">开灯</a>|<a href="#" onclick="setActiveStyleSheet('alternate'); return false;">关灯</a>）</li>
             </ul>
         </nav>
 
