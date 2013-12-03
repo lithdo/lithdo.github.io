@@ -1,5 +1,6 @@
 body {
 	background: #cdd4dc;
+    margin: 0;
 }
 
 #container {
@@ -114,10 +115,6 @@ dt {
         border-radius: 5px;
         box-shadow: none;
     }
-    body {
-        margin-left: 0;
-        margin-right: 0;
-    }
 }
 
 @media only screen 
@@ -130,10 +127,6 @@ dt {
         padding: 5px;
         border-radius: 5px;
         box-shadow: none;
-    }
-    body {
-        margin-left: 0;
-        margin-right: 0;
     }
 }
 
