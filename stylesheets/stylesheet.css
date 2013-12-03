@@ -215,3 +215,12 @@ p.content {
 ol.duokan-footnote-content {
     font-size: 90%;
 }
+
+pre {
+    background-color: #202224;
+    color: #f8f8f8;
+    overflow-x: auto;
+    border-radius: .3em;
+    padding: 1em;
+    margin-bottom: 1.5em;
+}
