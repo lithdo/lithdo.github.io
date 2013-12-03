@@ -104,9 +104,14 @@ dt {
     margin-left: 1em;
 }
 
-@media screen and  (max-width: 650px) {
+@media screen and  (max-width: 800px) {
     #container {
         width: inherit;
+    }
+    #content>section, #content>article {
+        padding: 5px;
+        border-radius: 5px;
+        box-shadow: none;
     }
 }
 
