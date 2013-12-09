@@ -10,10 +10,62 @@
     <script type="text/javascript" src="../scripts/styleswitcher.js"></script>
     <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" title="default" />
     <link rel="alternate stylesheet" type="text/css" href="../stylesheets/dark.css" title="alternate" />
+
     <style>
         h3 {
             text-align: center;
+            font-size: 130%;
+            margin-top: 50px;
         }
+
+        p {
+            text-indent: 2em;
+        }
+
+        p.prologue {
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        p.content {
+            text-indent: inherit;
+        }
+
+        a[data-tooltip]:link, a[data-tooltip]:visited {
+            position: relative;
+            text-decoration: none;
+        }
+
+        a[data-tooltip]:before {
+          content: "";
+          position: absolute;
+          border-top: 20px solid #0090ff;
+          border-left: 30px solid transparent;
+          border-right: 30px solid transparent;
+          visibility: hidden;
+          top: -18px;
+          left: -26px;
+        }
+
+        a[data-tooltip]:after {
+          content: attr(data-tooltip);
+          position: absolute;
+          color: white;
+          top: -35px;
+          left: -26px;
+          background: #0090ff;
+          padding: 5px 15px;
+          border-radius: 10px;
+          white-space: nowrap;
+          visibility: hidden;
+          font-size: small;
+          font-family: "宋体";
+        }
+
+        a[data-tooltip]:hover:before, a[data-tooltip]:hover:after {
+          visibility: visible;
+        }
+
     </style>
 </head>
 
@@ -601,5 +653,16 @@
     lithdo的<a href="mailto:lithdo@gmail.com">Email</a>
 </footer>
 </div>
+
+<script>
+    $(".duokan-footnote-item").hide();
+    $(".duokan-footnote").hover(function() {
+        linkID = $(this).attr("href");
+        link = $(linkID);
+        tip = link.children("p").html();
+        $(this).attr("data-tooltip", tip);
+    });
+</script>
+
 </body>
 </html>
