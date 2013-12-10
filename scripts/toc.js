@@ -6,8 +6,16 @@ $(document).ready(function () {
     }
 
     $("body").attr("id", "#top");
-    $("body").append('<div id="side-tools"><div id="tocSwitcher" class="float" onclick="$(\'#toc\').toggle(500);"></div><div id="toc" class="float"></div><p class="float" id="back-top"><a href="#top"><span></span>回到顶部</a></p></div>');
+    $("body").append('<div id="side-tools"><div id="tocSwitcher" class="float"></div><div id="toc" class="float"></div><p class="float" id="back-top"><a href="#top"><span></span>回到顶部</a></p></div>');
     updateTOC();
+	
+	$("#tocSwitcher").mouseenter(function() {	
+		$("#toc").show();
+	});
+	
+	$("#toc").mouseleave(function() {
+		$("#toc").hide();
+	});
 
     $("#toc a").click(function () {
         var rel = $(this).attr("href");
