@@ -150,6 +150,9 @@ dt {
     right: 120px;
     max-width: 12em;
     display: none;
+	background: white;
+	padding-right: 10px;
+	box-shadow: 0 0 8px #bbb;
 }
 
 #back-top {
@@ -219,4 +222,15 @@ pre {
     box-shadow:0 1px 5px rgba(0,0,0,0.4) inset, 0 0 20px rgba(0,0,0,0.2) inset;
     padding: 1em;
     margin-bottom: 1.5em;
+}
+
+#toc a {
+	border-bottom: 1px solid gray;
+	display: block;
+	background-color: rgb(226, 226, 226);
+	margin-top: 2px;
+	box-shadow: 1px 1px 1px rgb(148, 148, 148);
+	border-radius: 2px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
