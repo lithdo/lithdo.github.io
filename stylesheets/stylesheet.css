@@ -149,6 +149,9 @@ dt {
     right: 120px;
     max-width: 12em;
     display: none;
+	background: white;
+	padding-right: 10px;
+	box-shadow: 5px 5px 5px #555;
 }
 
 #back-top {
@@ -216,4 +219,8 @@ pre {
     border-radius: .3em;
     padding: 1em;
     margin-bottom: 1.5em;
+}
+
+#toc a {
+	border-bottom: 1px solid gray;
 }
