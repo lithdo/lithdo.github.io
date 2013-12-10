@@ -30,42 +30,11 @@
         p.content {
             text-indent: inherit;
         }
-
-        a[data-tooltip]:link, a[data-tooltip]:visited {
-            position: relative;
-            text-decoration: none;
+        
+        a.duokan-footnote img {
+            width: 10px;
+            height: 10px;
         }
-
-        a[data-tooltip]:before {
-          content: "";
-          position: absolute;
-          border-top: 20px solid #0090ff;
-          border-left: 30px solid transparent;
-          border-right: 30px solid transparent;
-          visibility: hidden;
-          top: -18px;
-          left: -26px;
-        }
-
-        a[data-tooltip]:after {
-          content: attr(data-tooltip);
-          position: absolute;
-          color: white;
-          top: -35px;
-          left: -26px;
-          background: #0090ff;
-          padding: 5px 15px;
-          border-radius: 10px;
-          white-space: nowrap;
-          visibility: hidden;
-          font-size: small;
-          font-family: "宋体";
-        }
-
-        a[data-tooltip]:hover:before, a[data-tooltip]:hover:after {
-          visibility: visible;
-        }
-
     </style>
 </head>
 
@@ -99,7 +68,7 @@
 
         <h3>停云<a class="duokan-footnote" href="#tingyun_note1"><img src="../images/books/note.png"/></a></h3>
 
-<p class="prologue">停云，思亲友也。樽湛新醪<a class="duokan-footnote" href="#tingyun_note2" data-tooltip="湛，沉，澄清。注云：“酒沉，清酌酒也。米物下沉。”醪，今称甜酒或醪糟。"><img src="../images/books/note.png"/></a>，园列初荣，愿言不从<a class="duokan-footnote" href="#tingyun_note3"><img src="../images/books/note.png"/></a>，叹息弥襟。</p>
+<p class="prologue">停云，思亲友也。樽湛新醪<a class="duokan-footnote" href="#tingyun_note2"><img src="../images/books/note.png"/></a>，园列初荣，愿言不从<a class="duokan-footnote" href="#tingyun_note3"><img src="../images/books/note.png"/></a>，叹息弥襟。</p>
 
 <p class="content">霭霭停云<a class="duokan-footnote" href="#tingyun_note4"><img src="../images/books/note.png"/></a>，濛濛时雨<a class="duokan-footnote" href="#tingyun_note5"><img src="../images/books/note.png"/></a>。<br/>
 八表同昏<a class="duokan-footnote" href="#tingyun_note6"><img src="../images/books/note.png"/></a>，平路伊阻<a class="duokan-footnote" href="#tingyun_note7"><img src="../images/books/note.png"/></a>。<br/>
@@ -655,12 +624,40 @@
 </div>
 
 <script>
-    $(".duokan-footnote-item").hide();
-    $(".duokan-footnote").hover(function() {
+    $("ol.duokan-footnote-cotent").hide();
+    
+    $("a.duokan-footnote").mouseenter(function() {
+        xy = $(this).offset();
+        scrTop = $(window).scrollTop();
+        scrLeft = $(window).scrollLeft();
+        w = $(this).width();
+        h = $(this).height()
         linkID = $(this).attr("href");
         link = $(linkID);
-        tip = link.children("p").html();
-        $(this).attr("data-tooltip", tip);
+        link.css({
+            "display": "block",
+            "position": "fixed",
+            "max-width": "350px",
+            "background": "#0090ff",
+            "color": "white",
+            "padding": "10px",
+            "border-radius": "10px",
+            "font-family": "宋体",
+            "list-style-type": "none",
+        });
+        link.css("top", xy.top - scrTop - link.outerHeight());
+        link.css("left", xy.left - scrLeft);
+        link.children("p").css({
+            "text-indent": "0",
+            "margin": "0"
+        });
+        link.show();
+    });
+    
+    $("a.duokan-footnote").mouseleave(function() {
+        linkID = $(this).attr("href");
+        link = $(linkID);
+        link.hide();
     });
 </script>
 
