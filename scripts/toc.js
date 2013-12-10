@@ -17,7 +17,8 @@ $(document).ready(function () {
 		$("#toc").hide();
 	});
 
-    $("#toc a").click(function () {
+    $("#toc a").click(function (event) {
+		event.preventDefault();
         var rel = $(this).attr("href");
         var pos = $(rel).offset().top;//获取该点到头部的距离
         $("html,body").animate({scrollTop: pos}, 800);
