@@ -5,9 +5,13 @@ $(document).ready(function () {
         $("#toc").html(toc);
     }
 
-    $("body").attr("id", "#top");
+    $("body").attr("id", "top");
     $("body").append('<div id="side-tools"><div id="tocSwitcher" class="float"></div><div id="toc" class="float"></div><p class="float" id="back-top"><a href="#top"><span></span>回到顶部</a></p></div>');
     updateTOC();
+	
+	$("#toc>ol").addClass("collapsibleList");	
+	$("#toc>ol").attr("id", "toc-list");	
+	CollapsibleLists.applyTo(document.getElementById('toc-list'));
 	
 	$("#tocSwitcher").mouseenter(function() {	
 		$("#toc").show();

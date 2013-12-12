@@ -223,11 +223,25 @@ pre {
 
 #toc a {
 	border-bottom: 1px solid gray;
-	display: block;
 	background-color: rgb(226, 226, 226);
 	margin-top: 2px;
 	box-shadow: 1px 1px 1px rgb(148, 148, 148);
 	border-radius: 2px;
 	padding-left: 5px;
 	padding-right: 5px;
+}
+
+.collapsibleList li{
+  list-style-image:url('../images/button.png');
+  cursor:auto;
+}
+
+li.collapsibleListOpen{
+  list-style-image:url('../images/button-open.png');
+  cursor:pointer;
+}
+
+li.collapsibleListClosed{
+  list-style-image:url('../images/button-closed.png');
+  cursor:pointer;
 }
