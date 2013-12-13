@@ -9,9 +9,11 @@ $(document).ready(function () {
     $("body").append('<div id="side-tools"><div id="tocSwitcher" class="float"></div><div id="toc" class="float"></div><p class="float" id="back-top"><a href="#top"><span></span>回到顶部</a></p></div>');
     updateTOC();
 	
-	$("#toc > ol > li > ol").each(function(index) {
-		CollapsibleLists.applyTo(this);
-	});
+	if(typeof(CollapsibleLists) != "undefined") {
+		$("#toc > ol > li > ol").each(function(index) {
+			CollapsibleLists.applyTo(this);
+		});
+	}
 
 	$("#tocSwitcher").mouseenter(function() {	
 		$("#toc").show();
