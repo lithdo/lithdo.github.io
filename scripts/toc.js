@@ -15,13 +15,30 @@ $(document).ready(function () {
         });
     }
 
+    var timeoutID = null;
+
     $("#tocSwitcher").mouseenter(function() {    
+        if(timeoutID) {
+            window.clearTimeout(timeoutID);
+            timeoutID = null;
+        }
         $("#toc").show();
     });
     
-    $("#toc").mouseleave(function() {
-        $("#toc").hide();
+    $("#toc").mouseenter(function() {    
+        if(timeoutID) {
+            window.clearTimeout(timeoutID);
+            timeoutID = null;
+        }
     });
+    
+    $("#toc").mouseleave(function() {
+        timeoutID = window.setTimeout(hideToc, 1500);
+    });
+
+    function hideToc() {
+        $("#toc").fadeOut();
+    }
 
     $("#toc a").click(function (event) {
         event.preventDefault();
