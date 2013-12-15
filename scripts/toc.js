@@ -20,7 +20,7 @@ $(document).ready(function () {
 	});
 	
 	$("#toc").mouseleave(function() {
-		$("#toc").hide();
+		$("#toc").delay(1500).hide();
 	});
 
     $("#toc a").click(function (event) {
