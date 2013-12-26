@@ -6,6 +6,7 @@
         <script src="../scripts/jquery-1.10.1.min.js"></script>
         <script src="../scripts/outliner.0.5.0.62.min.js"></script>
         <script src="../scripts/toc.js"></script>
+        <script src="../scripts/markdown.js"></script>
         <script src="../scripts/styleswitcher.js"></script>
         <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" title="default" />
         <link rel="alternate stylesheet" type="text/css" href="../stylesheets/dark.css" title="alternate" />
@@ -36,11 +37,53 @@
             </header>
 
             <div id="content">
+                <article class="markdown">
+# MACD策略
+
+## 介绍
+
+MACD称为指数平滑异同移动平均线，从双移动平均线发展而来，但它比双移动平均线阅读起来更方便：
+
+* 从负转正：买信号
+* 从正转负：卖信号
+* 变化角度大：趋势强
+
+## 算法
+
+* DIFF线：短期、长期指数平滑移动平均线（以下称均线）的差
+* DEA线：DIFF线的M日均线
+* MACD线：DIFF线与DEA线的差，柱状线
+
+## 应用原则
+
+* DIF和DEA大于0时，属于多头市场
+    * DIF上穿DEA时买入
+    * DIF下穿DEA时，只能视为一次短暂的回落，不能确定趋势转折，是否卖出需借助其他指标综合判断
+
+* DIF和DEA小于0时，属于空头市场
+    * DIF下穿DEA时卖出
+    * DIF上穿DEA时，只能视为一次短暂的反弹，不能确定趋势转折，是否买入需借助其他指标综合判断
+
+## 分析
+
+* MACD的基本思想是基于均线的趋势跟踪理念
+
+* 趋势跟踪系统的一般特征：
+    * 较低的可靠性（有大回撤）
+    * 具备较高的盈亏比
+                </article>
             </div>
 
             <footer>
                 lithdo的<a href="mailto:lithdo@gmail.com">Email</a>
             </footer>
         </div>
+
+        <script>
+            $(".markdown").each(function() {
+                $(this).html(markdown.toHTML($(this).html()));
+            });
+        </script>
+
     </body>
 </html>
